@@ -52,18 +52,22 @@ public class Stack {
         height++;
     }
 
-    public Node pop(int value){
+    public Node pop(){
 
         if (height==0){
             return null;
         }
         Node temp = top;
-        top= top.next;
-        temp.next=null;
-        height--;
-        if (height==0){
+        if (height==1){
             top=null;
+
+        }else {
+
+            top = top.next;
+            temp.next = null;
         }
+        height--;
+
         return temp;
     }
 
