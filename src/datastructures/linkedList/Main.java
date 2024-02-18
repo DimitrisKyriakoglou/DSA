@@ -11,6 +11,7 @@ public class Main {
         myLinkedList.getTail();
         myLinkedList.getLength();
         myLinkedList.printList();
+        myLinkedList.insert(1,5);
 
 
         myLinkedList.removeLast();
