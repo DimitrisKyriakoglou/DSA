@@ -58,18 +58,87 @@ public class BinarySearchTree {
     }
 
 
-    ////////  Recursive Contains    //////////////
+    ////////  Recursive   //////////////
     public boolean recursiveContains(Node currentNode, int value) {
         if (currentNode == null) return false;
         if (value == currentNode.value) return true;
         if (value < currentNode.value) {
             return recursiveContains(currentNode.left, value);
-        } else {
+        } else {  //if(value > currentNode.value){
             return recursiveContains(currentNode.right, value);
         }
     }
+
+    //Overloaded Method public
     public boolean recursiveContains(int value) {
 
         return recursiveContains(root, value);
     }
+
+    private Node recursiveInsert(Node currentNode, int value) {
+        if (currentNode == null) return new Node(value);
+
+        if (value < currentNode.value) {
+            currentNode.left = recursiveInsert(currentNode.left, value);
+        } else { //if(value > currentNode.value){
+            currentNode.right = recursiveInsert(currentNode.right, value);
+        }
+
+
+        return currentNode;
+    }
+
+    //Overloaded Method public
+    public void recursiveInsert(int value) {
+        if (root == null) root = new Node(value);
+        recursiveInsert(root, value);
+    }
+
+    private Node deleteNode(Node currentNode, int value) {
+        if (currentNode == null) return null;
+
+        /// Traverse through the tree
+        if (value < currentNode.value) {
+            currentNode.left = deleteNode(currentNode.left, value);
+        } else if (value > currentNode.value) {
+            currentNode.right = deleteNode(currentNode.right, value);
+            ///// until here we have checked if the value is in the tree, if not return null
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////// from here and on we found the value and we will take actions to delete it
+        } else {
+            //left leaf
+            if (currentNode.left == null && currentNode.right == null) {
+                currentNode = null;
+                /// Open on the left and has node on the right
+            } else if (currentNode.left == null) {
+                currentNode = currentNode.right;
+                /// Open on the right and has node on the left
+            } else if (currentNode.right == null) {
+                currentNode = currentNode.left;
+                //// Has nodes  both left and right
+            } else {
+                int subTreeMin = minValue(currentNode.right);
+                currentNode.value = subTreeMin;
+                currentNode.right = deleteNode(currentNode.right, subTreeMin);
+
+            }
+        }
+        return currentNode;
+    }
+
+    //Overloaded Method public
+    public void deleteNode(int value) {
+        deleteNode(root, value);
+    }
+
+    //////////  Helper Minimum Value //////////////
+
+    public int minValue(Node currentNode) {
+        while (currentNode.left != null) {
+            currentNode = currentNode.left;
+        }
+        return currentNode.value;
+    }
+/////////////////////////////////////////////////////////
+
 }
