@@ -1,16 +1,16 @@
 package datastructures.binarysearchtree;
 
 public class BinarySearchTree {
-     Node root;
+    Node root;
 
 
-    class Node{
+    class Node {
         int value;
         Node left;
         Node right;
 
-        Node(int value){
-            this.value=value;
+        Node(int value) {
+            this.value = value;
         }
     }
 
@@ -58,4 +58,18 @@ public class BinarySearchTree {
     }
 
 
+    ////////  Recursive Contains    //////////////
+    public boolean recursiveContains(Node currentNode, int value) {
+        if (currentNode == null) return false;
+        if (value == currentNode.value) return true;
+        if (value < currentNode.value) {
+            return recursiveContains(currentNode.left, value);
+        } else {
+            return recursiveContains(currentNode.right, value);
+        }
+    }
+    public boolean recursiveContains(int value) {
+
+        return recursiveContains(root, value);
+    }
 }
