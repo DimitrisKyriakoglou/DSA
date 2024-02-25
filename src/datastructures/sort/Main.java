@@ -23,6 +23,9 @@ public class Main {
 
 
 
+        Review sSort2= new Review();
+        sSort2.selectionSortReview(array);
+        System.out.println(Arrays.toString(array));
 
     }
 }
