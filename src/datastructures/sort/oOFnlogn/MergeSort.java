@@ -25,6 +25,7 @@ public class MergeSort {
         // Merge the two sorted halves (left and right) using the merge method,
         // and return the resulting sorted array.
         return merge(left, right);
+
     }
 
 
