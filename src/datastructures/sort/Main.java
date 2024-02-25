@@ -21,5 +21,8 @@ public class Main {
         sSort.selectionSort(array);
         System.out.println(Arrays.toString(array));
 
+
+
+
     }
 }
