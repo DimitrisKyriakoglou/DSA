@@ -1,4 +1,4 @@
-package datastructures.sort;
+package datastructures.sort.oOFnsquared;
 
 public class InsertionSort {
 
